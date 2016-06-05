@@ -21,3 +21,15 @@ Kun olet lisännyt kaikki yhteen commitiin tulevat tiedostot, niin tehdään var
 
 Seuraavaksi kun muutokset on cimmitoitu paikalliseen repositoryyn, niin on hyvä vielä tarkistaa komenolla `git status` ettei mitään oleellista unohtunut ja pushata muutokset palvelimelle komennolla `git push origin <branch>` jossa <branch> on pushattavan haaran nimi. Haaroista myönemmin lisää.
 
+### Haarat eli branchit
+
+Git mahdollistaa erilaisten ominaisuuksien kehittämisen erillään master haarasta sekä muista haaroista. Tämä mahdollistaa sen, että jokainen voi tehdä töitä omassa haarassaan välittämättä siitä että muokkaisivat vaikkapa samaa tiedostoa.
+Ennen uuden haaran luontia tarkista että olet varmasti `master` haarassa (tämä helpottaa myöhempää työskentelyä kun haara valmistuu). Uusi haara luodaan komenolla `git branch <haaran-nimi>` ja sinne siirrytään komennolla `git checkout <haaran-nimi>`.
+
+Haarassa voi tehdä muutoksia ja commiteja samalla tavalla kuin masterissa (joka on myöskin haara!), mutta pushatessa muutoksia palvelimelle tulee muistaa pushata ne oikeaan haaraan. Tämä tehdään komennolla `git push origin <haaran-nimi>`. Jos palvelimella ei vielä ole kyseisen nimistä haaraa, niin se luodaan automaattisesti.
+
+Kun haarassa tehty ominaisuus valmistuu, se voidaan yhdistää masteriin. Tämä kannattaa tehdä githubin web-käyttöliittymästä siirtymällä haaraan joka halutaan yhdistää ja painetaan `New pull request` nappia. Kun pullrequest(PR) on tehty, muut voivat kommentoida sitä ja pyytää tarvittaessa tekemään muutoksia. PR yhdistetään masteriin painamalla `merge`-nappia.
+
+### Muutosten lataaminen palvelimelta omalle koneelle
+
+Muuttuneet tiedostot saa ladattua palvelimelta komennolla `git pull`
