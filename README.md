@@ -23,6 +23,15 @@ Seuraavaksi kun muutokset on cimmitoitu paikalliseen repositoryyn, niin on hyvä
 
 ### Haarat eli branchit
 
+#### Haarojen nimeäminen
+
+Uudelle haaralle on hyvä antaa kuvaava nimi. Eli nimestä pitäisi siis pystyä jotenkin ymmärtämään mitä uusia ominaisuuksia haarassa tehdään. Lisäksi haaralle on hyvä antaa etuliite, josta selviää minkä tyyppisiä muutoksia tehdään. Esimerkkejä:
+
+- feature/enemy-ai <-- ominaisuus, joka tuo vihollisen tekoälyn peliin
+- bugfix/player-movement <-- bugikorjaus joka liittyy pelaajan liikkumiseen
+
+#### Haarojen käyttö
+
 Git mahdollistaa erilaisten ominaisuuksien kehittämisen erillään master haarasta sekä muista haaroista. Tämä mahdollistaa sen, että jokainen voi tehdä töitä omassa haarassaan välittämättä siitä että muokkaisivat vaikkapa samaa tiedostoa.
 Ennen uuden haaran luontia tarkista että olet varmasti `master` haarassa (tämä helpottaa myöhempää työskentelyä kun haara valmistuu). Uusi haara luodaan komenolla `git branch <haaran-nimi>` ja sinne siirrytään komennolla `git checkout <haaran-nimi>`.
 
@@ -33,3 +42,12 @@ Kun haarassa tehty ominaisuus valmistuu, se voidaan yhdistää masteriin. Tämä
 ### Muutosten lataaminen palvelimelta omalle koneelle
 
 Muuttuneet tiedostot saa ladattua palvelimelta komennolla `git pull`
+
+## Työskentelyohjeita
+
+Masteriin EI pushata suoraan, eli tavoitteena pitää masterissa sellainen versio joka toimii varmasti
+
+Kielenä JavaScript (unityscript), tai sitten jokin muu tilanteeseen sopiva.
+
+
+
