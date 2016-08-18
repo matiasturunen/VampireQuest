@@ -9,7 +9,7 @@ private var cameraObj : Camera;
 
 function Start() : void {
 
-	rigidBody = GetComponent(Rigidbody2D);
+  rigidBody = GetComponent(Rigidbody2D);
   cameraObj = Instantiate(cameraPrefab);
 
 }
