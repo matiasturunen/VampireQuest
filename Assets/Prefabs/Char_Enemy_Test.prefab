@@ -107,6 +107,8 @@ MonoBehaviour:
   projectile: {fileID: 1000013847462892, guid: 709dad28f93767b4782f725c8c7f7548, type: 2}
   deathParticles: {fileID: 198000012841012702, guid: e8c94bccee8a1744b82bfc8f0c50a633,
     type: 2}
+  loot:
+  - {fileID: 1000012613424416, guid: c46f56a3542cc324a95a7abc7e21ba40, type: 2}
 --- !u!212 &212000011974391912
 SpriteRenderer:
   m_ObjectHideFlags: 1

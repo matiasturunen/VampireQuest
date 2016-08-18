@@ -6,7 +6,8 @@ public var cameraPrefab : Camera; // kamera - prefab
 private var rigidBody : Rigidbody2D; // rigidbody2d
 private var cameraObj : Camera;
 
-function Start() {
+
+function Start() : void {
 
 	rigidBody = GetComponent(Rigidbody2D);
   cameraObj = Instantiate(cameraPrefab);

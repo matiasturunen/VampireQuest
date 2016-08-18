@@ -9,63 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1000013847462892}
+  m_RootGameObject: {fileID: 1000012613424416}
   m_IsPrefabParent: 1
---- !u!1 &1000013847462892
+--- !u!1 &1000012613424416
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 4000012577241504}
-  - 212: {fileID: 212000013778055080}
-  - 50: {fileID: 50000013331216274}
-  - 61: {fileID: 61000012426016542}
-  - 114: {fileID: 114000014102008916}
+  - 4: {fileID: 4000013869443368}
+  - 212: {fileID: 212000013344343676}
+  - 61: {fileID: 61000012992528596}
+  - 114: {fileID: 114000014003821490}
   m_Layer: 0
-  m_Name: Projectile_Bolt_Wooden
+  m_Name: Loot_HealthBottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000012577241504
+--- !u!4 &4000013869443368
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013847462892}
+  m_GameObject: {fileID: 1000012613424416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.46, y: -8.77, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!50 &50000013331216274
-Rigidbody2D:
-  serializedVersion: 2
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013847462892}
-  m_UseAutoMass: 0
-  m_Mass: 0.1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &61000012426016542
+--- !u!61 &61000012992528596
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013847462892}
+  m_GameObject: {fileID: 1000012613424416}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -73,29 +55,28 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.33, y: 1.71}
---- !u!114 &114000014102008916
+  m_Size: {x: 2.3999999, y: 2.6699998}
+--- !u!114 &114000014003821490
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013847462892}
+  m_GameObject: {fileID: 1000012613424416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9522283acd361d429e04c7e5ff46e9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 42131ebba86095846834ca4a5cb09b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  ttl: 4
-  speed: 6
-  particles: {fileID: 198000010655533114, guid: 9c678d43f2483a941aa9685dd3d2099a,
+  contains: health
+  amount: 30
+  particles: {fileID: 198000014105506896, guid: 1d30e97025ed924498942f78d1aae411,
     type: 2}
---- !u!212 &212000013778055080
+--- !u!212 &212000013344343676
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013847462892}
+  m_GameObject: {fileID: 1000012613424416}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -119,7 +100,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 128828949
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e0b10123effbec44cbf46db9cc41feb4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b9038bbc099cbea4587ffeea8a483709, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

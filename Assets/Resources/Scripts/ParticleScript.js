@@ -2,6 +2,7 @@
 
 private var particles : ParticleSystem;
 
+
 function Start() : void {
 
   particles = GetComponent(ParticleSystem);

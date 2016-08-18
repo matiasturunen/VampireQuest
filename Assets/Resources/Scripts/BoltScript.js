@@ -7,7 +7,8 @@ public var particles : ParticleSystem;
 
 private var rigidBody : Rigidbody2D;
 
-function Start () {
+
+function Start() : void {
 
   rigidBody = GetComponent(Rigidbody2D);
 
@@ -18,7 +19,7 @@ function Start () {
 
 }
 
-function FixedUpdate () {
+function FixedUpdate() : void {
 
   ttl -= Time.deltaTime;
 
@@ -28,7 +29,7 @@ function FixedUpdate () {
 
 }
 
-function OnCollisionEnter2D(coll: Collision2D) {
+function OnCollisionEnter2D(coll: Collision2D) : void {
 
   var actorScript : ActorScript = coll.gameObject.GetComponent(ActorScript);
 
