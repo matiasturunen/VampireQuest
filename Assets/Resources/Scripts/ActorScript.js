@@ -4,9 +4,25 @@ public var health : float = 0;
 public var projectile : GameObject;
 public var deathParticles : ParticleSystem;
 
+private var animator : Animator;
+private var rigidBody : Rigidbody2D;
+
 function Start() : void {
 
-  // GetComponent(Rigidbody2D)
+  rigidBody = GetComponent(Rigidbody2D);
+  animator = GetComponent(Animator);
+
+}
+
+function FixedUpdate() : void {
+
+  if (rigidBody && animator) {
+    if (rigidBody.velocity != Vector2.zero) {
+      animator.SetTrigger("move");
+    } else {
+      animator.SetTrigger("stop");
+    }
+  }
 
 }
 
@@ -34,40 +50,14 @@ function Kill() : void {
 
 }
 
-function FireWeapon() {
+function FireWeapon() : void {
 
   var spawnPos : Vector3 = Vector3(
-    transform.position.x + transform.up.x,
-    transform.position.y + transform.up.y,
+    transform.position.x + transform.up.x * 1.1,
+    transform.position.y + transform.up.y * 1.1,
     0
   );
 
   Instantiate(projectile, spawnPos, transform.rotation);
 
 }
-
-/*
-function ModHealth (mod : float) {
-	var h : float = this.health + mod;
-	Debug.Log("health --> " + h.ToString());
-	if (h > 0) {
-		this.health = h;
-	} else {
-		this.KillActor();
-	}
-}
-
-function KillActor () {
-	Debug.Log("DESTROY");
-	GameObject.Destroy(gameObject);
-}
-
-function OnCollisionEnter2D(coll: Collision2D) {
-	Debug.Log("AAAAAAAAAAA");
-	var colObject : GameObject = coll.gameObject;
-	if (colObject.tag == "Projectile" || colObject.tag == "Weapon") {
-		Debug.Log(colObject.ToString() + " hit with a weapon", gameObject);
-		this.ModHealth(colObject.GetComponent(WeaponScript).GetDamage() * (-1));
-	}
-}
-*/
