@@ -29,12 +29,12 @@ function FixedUpdate() : void {
 
 }
 
-function OnCollisionEnter2D(coll: Collision2D) : void {
+function OnCollisionEnter2D(coll: Collision2D) {
 
-  var actorScript : ActorScript = coll.gameObject.GetComponent(ActorScript);
+  var actorScript : Actor = coll.gameObject.GetComponent(Actor);
 
   if (actorScript) {
-    actorScript.Damage(damage);
+    actorScript.ModHealth(damage * (-1));
   }
 
   Instantiate(

@@ -8,18 +8,29 @@ public var projectile : GameObject;
 public var deathParticles : ParticleSystem;
 public var loot : GameObject[];
 
+private var hud : UI_HUD;
+private var isPlayer : boolean;
 private var animator : Animator;
 private var rigidBody : Rigidbody2D;
 
 
-function Start() : void {
+function Start() {
 
   rigidBody = GetComponent(Rigidbody2D);
   animator = GetComponent(Animator);
 
+  var temp : PlayerControl = GetComponent(PlayerControl);
+
+  if (temp) {
+    isPlayer = true;
+    hud = GameObject.Find("UI_HUD").GetComponent(UI_HUD);
+  } else {
+    isPlayer = false;
+  }
+
 }
 
-function FixedUpdate() : void {
+function FixedUpdate() {
 
   if (rigidBody && animator) {
     if (rigidBody.velocity != Vector2.zero) {
@@ -31,14 +42,7 @@ function FixedUpdate() : void {
 
 }
 
-function Damage(amount : float) : void {
-
-  Debug.Log("Damage, actor (" + gameObject.ToString() + "), amount (" + amount.ToString() + ")");
-  ModHealth(amount * (-1));
-
-}
-
-function Kill() : void {
+function Kill() {
 
   Debug.Log("Kill, actor (" + gameObject.ToString() + ")");
 
@@ -66,7 +70,15 @@ function ModHealth(mod : float) {
 
   health += mod;
 
-  if (health < 0) {
+  if (isPlayer) {
+    if (mod < 0) {
+      hud.Message("Received " + (mod * (-1)).ToString() + " damage...");
+    } else {
+      hud.Message("Restored " + mod.ToString() + " health...");
+    }
+  }
+
+  if (health <= 0) {
     Kill();
   } else if (health > maxHealth) {
     health = maxHealth;
@@ -74,20 +86,17 @@ function ModHealth(mod : float) {
 
 }
 
+function AddAmmo(amount : int) {
 
-function Add(what : String, amount : float) : void {
+  ammo += amount;
 
-  Debug.Log("Add, actor (" + gameObject.ToString() + "), amount (" + amount.ToString() + ")");
-
-  if (what == "health") {
-    ModHealth(amount);
-  } else if (what == "ammo") {
-    ammo += amount;
+  if (isPlayer) {
+    hud.Message("Added " + amount.ToString() + " ammo...");
   }
 
 }
 
-function FireWeapon() : void {
+function FireWeapon() {
 
   if (ammo > 0) {
     ammo -= 1;

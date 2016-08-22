@@ -1,16 +1,15 @@
 ﻿#pragma strict
 
-public var contains : String;
-public var amount : float;
+public var amount : int;
 public var particles : ParticleSystem;
 
 
-function OnCollisionEnter2D(coll: Collision2D) : void {
+function OnCollisionEnter2D(coll: Collision2D) {
 
-  var actorScript : ActorScript = coll.gameObject.GetComponent(ActorScript);
+  var actorScript : Actor = coll.gameObject.GetComponent(Actor);
 
   if (actorScript) {
-    actorScript.Add(contains, amount);
+    actorScript.AddAmmo(amount);
   }
 
   Instantiate(

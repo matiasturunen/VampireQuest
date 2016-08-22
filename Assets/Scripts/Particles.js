@@ -3,14 +3,14 @@
 private var particles : ParticleSystem;
 
 
-function Start() : void {
+function Start() {
 
   particles = GetComponent(ParticleSystem);
   particles.GetComponent(Renderer).sortingLayerName = "Player";
 
 }
 
-function FixedUpdate() : void {
+function FixedUpdate() {
 
   if (particles.IsAlive() == false) {
     Destroy(gameObject);
