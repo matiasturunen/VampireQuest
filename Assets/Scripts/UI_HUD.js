@@ -12,12 +12,12 @@ private var messageList : Array;
 
 private class MessageClass {
 
-  public var msg : String;
-  public var time : float;
+  public var text : String;
+  public var lifeTime : float;
 
   function MessageClass(m : String, t : float) {
-    msg = m;
-    time = t;
+    text = m;
+    lifeTime = t;
   }
 
 }
@@ -45,9 +45,9 @@ function FixedUpdate() {
 
   if (messageTimer < 0) {
     if (messageList.length > 0) {
-      var e : MessageClass = messageList.Shift() as MessageClass; 
-      messageDisplay.text = e.msg;
-      messageTimer = e.time;
+      var message : MessageClass = messageList.Shift() as MessageClass; 
+      messageDisplay.text = message.text;
+      messageTimer = message.lifeTime;
     } else if (messageDisplay.text) {
       messageDisplay.text = "";
     }
