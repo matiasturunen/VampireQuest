@@ -1,11 +1,11 @@
 ﻿#pragma strict
 
-public var player : GameObject;
+public var playerObject : GameObject;
 public var healthSlider : UnityEngine.UI.Slider;
 public var messageDisplay : UnityEngine.UI.Text;
 public var ammoCountDisplay : UnityEngine.UI.Text;
 
-private var playerActorScript : Actor;
+private var player : Player;
 private var messageTimer : float;
 private var messageList : Array;
 
@@ -25,21 +25,21 @@ private class MessageClass {
 
 function Start() {
 
-  playerActorScript = player.GetComponent(Actor);
+  player = playerObject.GetComponent(Player);
   messageList = new Array();
 
   if (healthSlider) {
     healthSlider.minValue = 0.0;
-    healthSlider.maxValue = playerActorScript.maxHealth;
-    healthSlider.value = playerActorScript.health;
+    healthSlider.maxValue = player.maxHealth;
+    healthSlider.value = player.health;
   }
 
 }
 
 function FixedUpdate() {
 
-  healthSlider.value = playerActorScript.health;
-  ammoCountDisplay.text = playerActorScript.ammo.ToString();
+  healthSlider.value = player.health;
+  ammoCountDisplay.text = player.ammo.ToString();
 
   messageTimer -= Time.deltaTime;
 

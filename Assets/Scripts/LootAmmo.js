@@ -6,10 +6,10 @@ public var particles : ParticleSystem;
 
 function OnCollisionEnter2D(coll: Collision2D) {
 
-  var actorScript : Actor = coll.gameObject.GetComponent(Actor);
+  var player : Player = coll.gameObject.GetComponent(Player);
 
-  if (actorScript) {
-    actorScript.AddAmmo(amount);
+  if (player) {
+    player.AddAmmo(amount);
   }
 
   Instantiate(
