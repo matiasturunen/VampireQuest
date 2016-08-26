@@ -76,8 +76,7 @@ private function Kill() {
 private function MoveAround() {
   // move enemy towards player
   var playerObject = GameObject.FindWithTag('Player');
-  var heading = playerObject.transform.position - transform.position;
-  var distance = heading.magnitude;
+  var heading = (playerObject.transform.position - transform.position) * 0.1;
   var direction = heading.normalized;
 
   // look towards direction of movement
