@@ -27,7 +27,7 @@ GameObject:
   - 95: {fileID: 95000010811421550}
   m_Layer: 0
   m_Name: Char_Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,9 +119,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxHealth: 100
+  ammo: 10
   projectile: {fileID: 1000013847462892, guid: 709dad28f93767b4782f725c8c7f7548, type: 2}
   deathParticles: {fileID: 198000012841012702, guid: e8c94bccee8a1744b82bfc8f0c50a633,
     type: 2}
+  loot: []
 --- !u!212 &212000012516734304
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1,11 +1,11 @@
 ﻿#pragma strict
 
-public var playerObject : GameObject;
+//public var playerObject : GameObject;
 public var healthSlider : UnityEngine.UI.Slider;
 public var messageDisplay : UnityEngine.UI.Text;
 public var ammoCountDisplay : UnityEngine.UI.Text;
 
-private var player : Player;
+private var player : Player;    // player behavior script
 private var messageTimer : float;
 private var messageList : Array;
 
@@ -25,7 +25,8 @@ private class MessageClass {
 
 function Start() {
 
-  player = playerObject.GetComponent(Player);
+  //player = playerObject.GetComponent(Player);
+  player = GameObject.FindWithTag('Player').GetComponent(Player);
   messageList = new Array();
 
   if (healthSlider) {

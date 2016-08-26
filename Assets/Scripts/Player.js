@@ -9,25 +9,15 @@ public var deathParticles : ParticleSystem;
 public var loot : GameObject[];
 
 private var hud : UI_HUD;
-private var isPlayer : boolean;
 private var animator : Animator;
 private var rigidBody : Rigidbody2D;
 
 
 function Start() {
-
   rigidBody = GetComponent(Rigidbody2D);
   animator = GetComponent(Animator);
 
-  var temp : PlayerControl = GetComponent(PlayerControl);
-
-  if (temp) {
-    isPlayer = true;
-    hud = GameObject.Find("UI_HUD").GetComponent(UI_HUD);
-  } else {
-    isPlayer = false;
-  }
-
+  hud = GameObject.Find("UI_HUD").GetComponent(UI_HUD);
 }
 
 function FixedUpdate() {
@@ -67,15 +57,12 @@ function Kill() {
 }
 
 function ModHealth(mod : float) {
-
   health += mod;
 
-  if (isPlayer) {
-    if (mod < 0) {
-      hud.Message("Received " + (mod * (-1)).ToString() + " damage...");
-    } else {
-      hud.Message("Restored " + mod.ToString() + " health...");
-    }
+  if (mod < 0) {
+    hud.Message("Received " + (mod * (-1)).ToString() + " damage...");
+  } else {
+    hud.Message("Restored " + mod.ToString() + " health...");
   }
 
   if (health <= 0) {
@@ -83,21 +70,14 @@ function ModHealth(mod : float) {
   } else if (health > maxHealth) {
     health = maxHealth;
   }
-
 }
 
 function AddAmmo(amount : int) {
-
   ammo += amount;
-
-  if (isPlayer) {
-    hud.Message("Added " + amount.ToString() + " ammo...");
-  }
-
+  hud.Message("Added " + amount.ToString() + " ammo...");
 }
 
 function FireWeapon() {
-
   if (ammo > 0) {
     ammo -= 1;
     var spawnPos : Vector3 = Vector3(
@@ -109,6 +89,5 @@ function FireWeapon() {
   }
 
   Debug.Log("Fire, actor (" + gameObject.ToString() + "), ammo remains (" + ammo.ToString() + ")");
-
 }
 
