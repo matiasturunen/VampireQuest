@@ -8,7 +8,7 @@ public var particles : ParticleSystem;
 private var rigidBody : Rigidbody2D;
 
 
-function Start() : void {
+function Start() {
 
   rigidBody = GetComponent(Rigidbody2D);
 
@@ -19,7 +19,7 @@ function Start() : void {
 
 }
 
-function FixedUpdate() : void {
+function FixedUpdate() {
 
   ttl -= Time.deltaTime;
 
@@ -31,18 +31,20 @@ function FixedUpdate() : void {
 
 function OnCollisionEnter2D(coll: Collision2D) {
 
-  var actorScript : Actor = coll.gameObject.GetComponent(Actor);
-
-  if (actorScript) {
-    actorScript.ModHealth(damage * (-1));
+  // check if we hit a player
+  var player : Player = coll.gameObject.GetComponent(Player);
+  if (player) {
+    player.ModHealth(damage * (-1));
   }
 
-  Instantiate(
-    particles,
-    transform.position,
-    Quaternion(transform.rotation.x, transform.rotation.y, 0.0, 0)
-  );
+  // check if we hit an enemy
+  var enemy: CommonEnemy = coll.gameObject.GetComponent(CommonEnemy);
+  if (enemy) {
+    enemy.Damage(damage);
+  }
 
-  ttl = -1;
+  // show collision particles and destroy the bolt
+  Instantiate(particles, transform.position, Quaternion.identity);
+  Destroy(gameObject);
 
 }

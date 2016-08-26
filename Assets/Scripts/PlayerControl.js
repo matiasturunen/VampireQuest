@@ -4,14 +4,14 @@ public var speed : float = 3; // nopeus, voi muokata editorissa
 public var cameraPrefab : Camera; // kamera - prefab
 
 private var rigidBody : Rigidbody2D; // rigidbody2d
-private var actorScript : Actor;
+private var player : Player;
 private var cameraObj : Camera;
 
 
 function Start() {
 
   rigidBody = GetComponent(Rigidbody2D);
-  actorScript = GetComponent(Actor);
+  player = GetComponent(Player);
   cameraObj = Instantiate(cameraPrefab);
 
 }
@@ -31,7 +31,7 @@ function FixedUpdate() {
   cameraObj.transform.position.y = transform.position.y;
 
   if (Input.GetMouseButtonDown(0)) {
-    actorScript.FireWeapon();
+    player.FireWeapon();
   }
 
 }
