@@ -97,14 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73463dc5f6531240bf70d4a8b0a1b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  MaxHealth: 50
   DamageMax: 20
   DamageMix: 15
   speed: 1.5
   deathParticles: {fileID: 198000012841012702, guid: e8c94bccee8a1744b82bfc8f0c50a633,
     type: 2}
   bloodAmount: 30
-  wanderingFactor: 0.2
   loot:
   - {fileID: 1000012392779316, guid: 5286d97e493ed1b4a920062c7ba5003d, type: 2}
 --- !u!212 &212000011137243640
