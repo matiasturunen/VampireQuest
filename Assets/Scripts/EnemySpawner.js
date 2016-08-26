@@ -1,20 +1,28 @@
-﻿#pragma strict
+#pragma strict
 // spawn enemies around player
 
-var spawnRadiusMin: float = 5;
-var spawnRadiusMax: float = 7;
+var spawnRadiusMin: float = 15;
+var spawnRadiusMax: float = 20;
 
-var ForkEnemy: GameObject;
-var FastEnemy: GameObject;
-var FatEnemy: GameObject;
-var RangedEnemy: GameObject;
-
-var enemiesInWave: int = 5;
+var Waves: Wave[];
 
 private var playerObject: GameObject;
 private var currentWave: int = 0;
 private var enemiesSpawned: int = 0;
 private var spawning: boolean = false;
+
+public class WaveEnemy {
+  public var name: String;
+  public var delay: float;
+  public var enemyType: GameObject;
+  public var spawnAmount: int;
+  public var message: String;
+}
+
+public class Wave {
+  public var name: String;
+  public var WaveEnemies: WaveEnemy[];
+}
 
 function Start () {
   playerObject = GameObject.FindWithTag('Player');
@@ -26,9 +34,9 @@ function FixedUpdate() {
     var enemiesInField = GameObject.FindGameObjectsWithTag('Enemy').length;
     Debug.Log('Enemy count ' + enemiesInField);
     if (enemiesInField == 0) {
-      currentWave += 1;
       spawning = true;
       SpawnWave(currentWave);
+      currentWave += 1;
     }
   }
 }
@@ -41,13 +49,26 @@ private function getSpawnPoint() {
 }
 
 private function SpawnWave(waveNum: int) {
-  // find player current position
+  // find player current position again
   playerObject = GameObject.FindWithTag('Player');
 
   // spawn enemies
-  for (var i = 0; i < waveNum * enemiesInWave; i++) {
-    Instantiate(ForkEnemy, getSpawnPoint(), Quaternion.identity);
-    enemiesSpawned++;
+  var waveEnemies = Waves[waveNum].WaveEnemies;
+
+  for (var enemy: WaveEnemy in waveEnemies) {
+    if (enemy.delay > 0) {
+      yield WaitForSeconds(enemy.delay);
+    }
+
+    if (enemy.message != '') {
+      // TODO: show message
+    }
+
+    if (enemy.enemyType && enemy.spawnAmount > 0) {
+      for (var i = 0; i < enemy.spawnAmount; i++) {
+        Instantiate(enemy.enemyType, getSpawnPoint(), Quaternion.identity);
+      }
+    }
   }
   spawning = false;
 }
