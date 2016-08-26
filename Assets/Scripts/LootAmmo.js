@@ -12,12 +12,6 @@ function OnCollisionEnter2D(coll: Collision2D) {
     player.AddAmmo(amount);
   }
 
-  Instantiate(
-    particles,
-    transform.position,
-    Quaternion(transform.rotation.x, transform.rotation.y, 0.0, 0)
-  );
-
+  Instantiate( particles, transform.position, Quaternion.identity);
   Destroy(gameObject);
-
 }

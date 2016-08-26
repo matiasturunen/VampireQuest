@@ -243,8 +243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec477ba7b79b2b48aca48bade1746a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 1000012731611986, guid: ed5aaa92dd7bf2e4f940bada998180c5,
-    type: 2}
   healthSlider: {fileID: 114000013685920088}
   messageDisplay: {fileID: 114000013069898058}
   ammoCountDisplay: {fileID: 114000011261416904}
