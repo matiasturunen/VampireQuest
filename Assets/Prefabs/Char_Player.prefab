@@ -57,7 +57,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  ammo: 10
+  ammo: 10000
   projectile: {fileID: 1000013847462892, guid: 709dad28f93767b4782f725c8c7f7548, type: 2}
   deathParticles: {fileID: 198000012841012702, guid: e8c94bccee8a1744b82bfc8f0c50a633,
     type: 2}
