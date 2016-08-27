@@ -49,6 +49,10 @@ private function getSpawnPoint() {
 }
 
 private function SpawnWave(waveNum: int) {
+  if (waveNum >= Waves.length) {
+    Debug.Log('Invalid wave');
+    return;
+  }
   // find player current position again
   playerObject = GameObject.FindWithTag('Player');
 
