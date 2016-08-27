@@ -1,4 +1,5 @@
 ﻿#pragma strict
+// Put special attacks (ie. ranged) and other things specific to this enemy here
 
 var attackDelay: float = 1;
 

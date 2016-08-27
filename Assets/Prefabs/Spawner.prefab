@@ -59,7 +59,7 @@ MonoBehaviour:
     WaveEnemies:
     - name: TEST
       delay: 0
-      enemyType: {fileID: 1000010482706562, guid: a671807adf09d794c8a9db8033fdc18c,
+      enemyType: {fileID: 1000010531050488, guid: 9788747fae09315429c53b16fa35093a,
         type: 2}
       spawnAmount: 2
       message: 
