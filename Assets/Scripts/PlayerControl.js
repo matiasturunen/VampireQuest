@@ -1,7 +1,6 @@
 ﻿#pragma strict
 
 public var speed : float = 3; // nopeus, voi muokata editorissa
-public var hud : HUD;
 
 private var rigidBody : Rigidbody2D; // rigidbody2d
 private var player : Player;
@@ -9,13 +8,8 @@ private var player : Player;
 
 function Start() {
 
-  try {
-    rigidBody = GetComponent(Rigidbody2D);
-    player = GetComponent(Player);
-    Instantiate(hud);
-  } catch (err) {
-    Debug.Log(err.ToString());
-  }
+  rigidBody = GetComponent(Rigidbody2D);
+  player = GetComponent(Player);
 
 }
 

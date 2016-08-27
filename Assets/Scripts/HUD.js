@@ -49,6 +49,10 @@ function Start() {
 
 function FixedUpdate() {
 
+  if (playerObj == null) {
+    return;
+  }
+
   txtAmmo.text = player.ammo.ToString();
   txtHealth.text = player.health.ToString() + " / " + player.maxHealth.ToString();
 
