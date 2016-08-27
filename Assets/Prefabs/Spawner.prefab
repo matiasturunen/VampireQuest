@@ -55,25 +55,11 @@ MonoBehaviour:
   spawnRadiusMin: 15
   spawnRadiusMax: 16
   Waves:
-  - name: Wave 1 - Brutes
+  - name: Wave 1 - TEST
     WaveEnemies:
-    - name: Brute
-      delay: 0
-      enemyType: {fileID: 1000013283123064, guid: ad403a9ac7d85a44c910ed6539b16bda,
-        type: 2}
-      spawnAmount: 2
-      message: 
-  - name: Wave 2
-    WaveEnemies:
-    - name: ForkEnemy
+    - name: TEST
       delay: 0
       enemyType: {fileID: 1000010482706562, guid: a671807adf09d794c8a9db8033fdc18c,
-        type: 2}
-      spawnAmount: 2
-      message: 
-    - name: Brute
-      delay: 2
-      enemyType: {fileID: 1000013283123064, guid: ad403a9ac7d85a44c910ed6539b16bda,
         type: 2}
       spawnAmount: 2
       message: 

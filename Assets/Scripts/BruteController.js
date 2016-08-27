@@ -42,7 +42,7 @@ private function Attack(player: Player) {
 function OnTriggerEnter2D(coll: Collider2D) {
   var player: Player = coll.gameObject.GetComponent(Player);
   if (player) {
-    // we came close to player. Save time so we can
+    // we came close to player. Save time so we can use it later
     playerCollisionTime = Time.time;
   }
 }
