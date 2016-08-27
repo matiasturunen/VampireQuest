@@ -1,5 +1,4 @@
 ﻿#pragma strict
-// script specific to forkEnemy
 // Put special attacks (ie. ranged) and other things specific to this enemy here
 
 var attackDelay: float = 1;
@@ -26,6 +25,7 @@ private function AnimateMovement() {
       animator.SetTrigger('move');
     } else {
       animator.SetTrigger('stop');
+      Debug.Log('Stopped Brute');
     }
   }
 }
@@ -66,4 +66,3 @@ function OnTriggerExit2D(coll: Collider2D) {
     playerCollisionTime = 0;
   }
 }
-

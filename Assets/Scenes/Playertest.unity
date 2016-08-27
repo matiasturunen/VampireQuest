@@ -25786,7 +25786,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &677006107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50033,7 +50033,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013316024558, guid: ed5aaa92dd7bf2e4f940bada998180c5, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed5aaa92dd7bf2e4f940bada998180c5, type: 2}
