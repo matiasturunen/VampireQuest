@@ -8,7 +8,7 @@ public var projectile : GameObject;
 public var deathParticles : ParticleSystem;
 public var loot : GameObject[];
 
-private var hud : UI_HUD;
+private var hud : HUD;
 private var animator : Animator;
 private var rigidBody : Rigidbody2D;
 
@@ -17,7 +17,7 @@ function Start() {
   rigidBody = GetComponent(Rigidbody2D);
   animator = GetComponent(Animator);
 
-  hud = GameObject.Find("UI_HUD").GetComponent(UI_HUD);
+  hud = GameObject.Find("HUD").GetComponent(HUD);
 }
 
 function FixedUpdate() {

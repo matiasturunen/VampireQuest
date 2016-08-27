@@ -1,37 +1,45 @@
 ﻿#pragma strict
 
 public var speed : float = 3; // nopeus, voi muokata editorissa
-public var cameraPrefab : Camera; // kamera - prefab
+public var hud : HUD;
 
 private var rigidBody : Rigidbody2D; // rigidbody2d
 private var player : Player;
-private var cameraObj : Camera;
 
 
 function Start() {
 
-  rigidBody = GetComponent(Rigidbody2D);
-  player = GetComponent(Player);
-  cameraObj = Instantiate(cameraPrefab);
+  try {
+    rigidBody = GetComponent(Rigidbody2D);
+    player = GetComponent(Player);
+    Instantiate(hud);
+  } catch (err) {
+    Debug.Log(err.ToString());
+  }
 
 }
 
 function FixedUpdate() {
 
-  var inputDir : float = Input.GetAxis("Vertical");
-  var mousePos : Vector2 = cameraObj.ScreenToWorldPoint(Input.mousePosition);
+  try {
 
-  var heading : Vector2 = (mousePos - transform.position).normalized;
-  var velocity : Vector2 = Vector2(inputDir * heading.x, inputDir * heading.y);
+    var inputDir : float = Input.GetAxis('Vertical');
+    var mousePos : Vector2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-  transform.up = heading;
-  rigidBody.velocity = Vector2.ClampMagnitude(velocity * speed, speed);
+    var heading : Vector2 = (mousePos - transform.position).normalized;
+    var velocity : Vector2 = Vector2(inputDir * heading.x, inputDir * heading.y);
 
-  cameraObj.transform.position.x = transform.position.x;
-  cameraObj.transform.position.y = transform.position.y;
+    transform.up = heading;
+    rigidBody.velocity = Vector2.ClampMagnitude(velocity * speed, speed);
 
-  if (Input.GetMouseButtonDown(0)) {
-    player.FireWeapon();
+    if (Input.GetMouseButtonDown(0)) {
+      player.FireWeapon();
+    }
+
+  } catch (err) {
+
+    Debug.Log("Error: " + err.ToString());
+
   }
 
 }

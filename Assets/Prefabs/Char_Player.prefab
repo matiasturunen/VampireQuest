@@ -105,8 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  cameraPrefab: {fileID: 20000010405953780, guid: b70b3002be49eca43b946d62cd275adc,
-    type: 2}
+  hud: {fileID: 114000012442238016, guid: 92ce2d160d40f224f8fd40b68a21a0b0, type: 2}
 --- !u!114 &114000013808900534
 MonoBehaviour:
   m_ObjectHideFlags: 1
