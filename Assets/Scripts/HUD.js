@@ -9,6 +9,8 @@ public var cameraPrefab : Camera;
 private var txtMessage : UnityEngine.UI.Text;
 private var txtHealth : UnityEngine.UI.Text;
 private var txtAmmo : UnityEngine.UI.Text;
+private var txtPoints : UnityEngine.UI.Text;
+private var txtKills : UnityEngine.UI.Text;
 
 private var cameraObj : Camera;
 private var playerObj : GameObject;
@@ -17,6 +19,8 @@ private var player : Player;    // player behavior script
 private var messageTimer : float;
 private var messageList : Array;
 
+private var points : int = 0;
+private var kills : int = 0;
 
 private class MessageClass {
 
@@ -42,6 +46,8 @@ function Start() {
   txtHealth = GameObject.Find('txt_health').GetComponent(UnityEngine.UI.Text);
   txtAmmo = GameObject.Find('txt_ammo').GetComponent(UnityEngine.UI.Text);
   txtMessage = GameObject.Find('txt_message').GetComponent(UnityEngine.UI.Text);
+  txtKills = GameObject.Find('txt_kills').GetComponent(UnityEngine.UI.Text);
+  txtPoints = GameObject.Find('txt_points').GetComponent(UnityEngine.UI.Text);
 
   messageList = new Array();
 
@@ -54,6 +60,8 @@ function FixedUpdate() {
   }
 
   txtAmmo.text = player.ammo.ToString();
+  txtKills.text = kills.ToString();
+  txtPoints.text = points.ToString();
   txtHealth.text = player.health.ToString() + " / " + player.maxHealth.ToString();
 
   cameraObj.transform.position.x = playerObj.transform.position.x;
@@ -91,4 +99,22 @@ function Message(msg : String, time : float) {
 
   messageList.Push(new MessageClass(msg, time));
 
+}
+
+function addPoints(amount : int) {
+  addPoints(amount, true);
+}
+
+function addPoints(amount : int, isKill : boolean) {
+
+  if (isKill == true) {
+    kills += 1;
+  }
+
+  points += amount;
+
+}
+
+function getPoints() : int {
+  return points;
 }

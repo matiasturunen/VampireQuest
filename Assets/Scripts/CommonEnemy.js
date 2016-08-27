@@ -8,6 +8,7 @@ var DamageMin: float = 15;   // min damage that enemy can deal
 var speed: float = 2;        // movement speed
 var deathParticles: ParticleSystem; // particles to show on death
 var bloodAmount: float = 30; // Amount of blood contained in this enemy.
+var points: int = 5; // number of points rewarded for killing this
 
 var loot: GameObject[];     // items to drop on death
 
@@ -53,6 +54,13 @@ private function DropLoot() {
 
 private function Kill() {
   Debug.Log("Killed enemy (" + gameObject.ToString() + ")");
+
+  // adding points when this is killed
+  try {
+    GameObject.FindWithTag("HUD").GetComponent(HUD).addPoints(points);
+  } catch (err) {
+    Debug.Log(err.ToString());
+  }
 
   if (deathParticles) {
     Instantiate(

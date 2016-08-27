@@ -22,25 +22,23 @@ function FixedUpdate() {
     var heading : Vector2 = (mousePos - transform.position).normalized;
     transform.up = heading;
 
-    if (Input.GetAxis("Vertical")) {
-      // move if buttons are pressed
-      var inputDir : float = Input.GetAxis("Vertical");
-      var velocity : Vector2 = Vector2(inputDir * heading.x, inputDir * heading.y);
-      rigidBody.velocity = Vector2.ClampMagnitude(velocity * speed, speed);
-
-    } else {
-      // Don't move when buttons are not pressed
-      rigidBody.velocity = Vector2.zero;
-    }
-
-    if (Input.GetMouseButtonDown(0)) {
-      player.FireWeapon();
-    }
-
   } catch (err) {
+    Debug.Log(err.ToString());
+  }
 
-    Debug.Log("Error: " + err.ToString());
+  if (Input.GetAxis("Vertical")) {
+    // move if buttons are pressed
+    var inputDir : float = Input.GetAxis("Vertical");
+    var velocity : Vector2 = Vector2(inputDir * heading.x, inputDir * heading.y);
+    rigidBody.velocity = Vector2.ClampMagnitude(velocity * speed, speed);
 
+  } else {
+    // Don't move when buttons are not pressed
+    rigidBody.velocity = Vector2.zero;
+  }
+
+  if (Input.GetMouseButtonDown(0)) {
+    player.FireWeapon();
   }
 
 }
