@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011776535562}
   - 114: {fileID: 114000010681137772}
+  - 212: {fileID: 212000013450666188}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -53,15 +54,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRadiusMin: 15
   spawnRadiusMax: 16
-  ForkEnemy: {fileID: 1000010482706562, guid: a671807adf09d794c8a9db8033fdc18c, type: 2}
-  FastEnemy: {fileID: 1000010531050488, guid: 9788747fae09315429c53b16fa35093a, type: 2}
-  FatEnemy: {fileID: 1000013283123064, guid: ad403a9ac7d85a44c910ed6539b16bda, type: 2}
-  RangedEnemy: {fileID: 1000010175804334, guid: c48e6b65b48c94a4abc371dfe8b5651d,
-    type: 2}
   Waves:
   - name: Wave 1
     WaveEnemies:
-    - name: ForkEnemy
+    - name: Farmer
       delay: 0
       enemyType: {fileID: 1000010482706562, guid: a671807adf09d794c8a9db8033fdc18c,
         type: 2}
@@ -69,15 +65,58 @@ MonoBehaviour:
       message: 
   - name: Wave 2
     WaveEnemies:
-    - name: ForkEnemy
+    - name: Ninja
       delay: 0
-      enemyType: {fileID: 1000010482706562, guid: a671807adf09d794c8a9db8033fdc18c,
+      enemyType: {fileID: 1000010531050488, guid: 9788747fae09315429c53b16fa35093a,
         type: 2}
       spawnAmount: 2
       message: 
-    - name: FatEnemy
-      delay: 2
+  - name: Wave 3
+    WaveEnemies:
+    - name: Brute
+      delay: 0
       enemyType: {fileID: 1000013283123064, guid: ad403a9ac7d85a44c910ed6539b16bda,
         type: 2}
       spawnAmount: 2
       message: 
+  - name: Wave 4
+    WaveEnemies:
+    - name: Torcher
+      delay: 0
+      enemyType: {fileID: 1000010175804334, guid: c48e6b65b48c94a4abc371dfe8b5651d,
+        type: 2}
+      spawnAmount: 2
+      message: 
+--- !u!212 &212000013450666188
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012742877840}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 1
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0

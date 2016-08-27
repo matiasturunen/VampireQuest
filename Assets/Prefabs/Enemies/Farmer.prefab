@@ -24,8 +24,10 @@ GameObject:
   - 114: {fileID: 114000012237892362}
   - 114: {fileID: 114000012197146556}
   - 50: {fileID: 50000011550595140}
+  - 58: {fileID: 58000011595101726}
+  - 95: {fileID: 95000014151732102}
   m_Layer: 0
-  m_Name: ForkEnemy
+  m_Name: Farmer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010482706562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.36, y: 5.58, z: 0}
+  m_LocalPosition: {x: -2.577901, y: 5.736947, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -61,8 +63,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61000013581590238
-BoxCollider2D:
+--- !u!58 &58000011595101726
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -72,9 +74,40 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0.046611853, y: -0.54768765}
+  m_Offset: {x: 0, y: -0.6}
   serializedVersion: 2
-  m_Size: {x: 1.0211548, y: 0.9978499}
+  m_Radius: 0.5
+--- !u!61 &61000013581590238
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010482706562}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.007240772, y: 0.0662354}
+  serializedVersion: 2
+  m_Size: {x: 0.95653105, y: 1.5363765}
+--- !u!95 &95000014151732102
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010482706562}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebfe1c5d3a8a7af4fa911fefc5b46517, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114000012197146556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: accf504712b5d0f4a8fbd3fd08c93b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDelay: 1
 --- !u!114 &114000012237892362
 MonoBehaviour:
   m_ObjectHideFlags: 1

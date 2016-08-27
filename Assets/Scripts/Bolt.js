@@ -31,7 +31,7 @@ function FixedUpdate() {
 
 function OnCollisionEnter2D(coll: Collision2D) {
 
-  // check if we hit a player
+  // check if we hit a player. If you somehow can run in front of this bolt, you can damage yourself
   var player : Player = coll.gameObject.GetComponent(Player);
   if (player) {
     player.ModHealth(damage * (-1));

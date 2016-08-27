@@ -1,8 +1,9 @@
 ﻿#pragma strict
-// script specific to forkEnemy
 // Put special attacks (ie. ranged) and other things specific to this enemy here
 
 var attackDelay: float = 1;
+var torch: GameObject;
+var torchFlySpeed: float = 6;
 
 private var rigidBody: Rigidbody2D;
 private var animator: Animator;
@@ -36,7 +37,20 @@ private function Attack(player: Player) {
 
   // Deal damage to player
   var damage = Mathf.Ceil(Random.Range(controller.DamageMin, controller.DamageMax));
-  player.ModHealth(-damage);
+  var spawnPosition = Vector3(
+    transform.position.x + transform.up.x * 1.1,
+    transform.position.y + transform.up.y * 1.1,
+    0
+  );
+  var playerDirection: Vector2 = (player.transform.position - transform.position).normalized;
+
+  // spawn new torch
+  var throwedTorch: GameObject = Instantiate(torch, spawnPosition, transform.rotation);
+  var throwedTorchControl: TorcherTorch = throwedTorch.GetComponent(TorcherTorch);
+
+  // configure torch damage and speed and let it fly towards the player
+  throwedTorchControl.setProperties(damage, torchFlySpeed);
+  throwedTorchControl.setVelocity(playerDirection);
 
 }
 

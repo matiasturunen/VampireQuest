@@ -17,14 +17,21 @@ function FixedUpdate() {
 
   try {
 
-    var inputDir : float = Input.GetAxis('Vertical');
+    // look towards mouse pointer
     var mousePos : Vector2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
     var heading : Vector2 = (mousePos - transform.position).normalized;
-    var velocity : Vector2 = Vector2(inputDir * heading.x, inputDir * heading.y);
-
     transform.up = heading;
-    rigidBody.velocity = Vector2.ClampMagnitude(velocity * speed, speed);
+
+    if (Input.GetAxis("Vertical")) {
+      // move if buttons are pressed
+      var inputDir : float = Input.GetAxis("Vertical");
+      var velocity : Vector2 = Vector2(inputDir * heading.x, inputDir * heading.y);
+      rigidBody.velocity = Vector2.ClampMagnitude(velocity * speed, speed);
+
+    } else {
+      // Don't move when buttons are not pressed
+      rigidBody.velocity = Vector2.zero;
+    }
 
     if (Input.GetMouseButtonDown(0)) {
       player.FireWeapon();
