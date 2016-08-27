@@ -32,7 +32,7 @@ function FixedUpdate() {
   if (spawning == false) {
     // we are not currently spawning more enemies
     var enemiesInField = GameObject.FindGameObjectsWithTag('Enemy').length;
-    Debug.Log('Enemy count ' + enemiesInField);
+    //Debug.Log('Enemy count ' + enemiesInField);
     if (enemiesInField == 0) {
       spawning = true;
       SpawnWave(currentWave);
