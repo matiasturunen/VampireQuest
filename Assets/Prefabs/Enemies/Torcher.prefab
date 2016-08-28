@@ -126,6 +126,8 @@ MonoBehaviour:
   deathParticles: {fileID: 198000012841012702, guid: e8c94bccee8a1744b82bfc8f0c50a633,
     type: 2}
   bloodAmount: 100
+  points: 5
+  bloodPool: {fileID: 1000010250164658, guid: 238cf30323eaeb7419341bb09901fcd8, type: 2}
   loot: []
 --- !u!114 &114000013308088014
 MonoBehaviour:
