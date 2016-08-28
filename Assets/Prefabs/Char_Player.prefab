@@ -25,6 +25,7 @@ GameObject:
   - 114: {fileID: 114000013808900534}
   - 95: {fileID: 95000010811421550}
   - 58: {fileID: 58000012093034436}
+  - 82: {fileID: 82000010141114282}
   m_Layer: 0
   m_Name: Char_Player
   m_TagString: Player
@@ -76,6 +77,80 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.4}
   serializedVersion: 2
   m_Radius: 0.6512001
+--- !u!82 &82000010141114282
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012731611986}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95000010811421550
 Animator:
   serializedVersion: 3
@@ -121,10 +196,13 @@ MonoBehaviour:
   ammo: 10000
   healthDrainSpeed: 1
   healthDrainAmount: 1
+  bloodDrinkingSpeed: 5
+  reloadTime: 0.2
   projectile: {fileID: 1000013847462892, guid: 709dad28f93767b4782f725c8c7f7548, type: 2}
   deathParticles: {fileID: 198000012841012702, guid: e8c94bccee8a1744b82bfc8f0c50a633,
     type: 2}
   loot: []
+  reloadSound: {fileID: 8300000, guid: 84ea548e6327e524eb2d8553f04c51f0, type: 3}
 --- !u!212 &212000012516734304
 SpriteRenderer:
   m_ObjectHideFlags: 1
