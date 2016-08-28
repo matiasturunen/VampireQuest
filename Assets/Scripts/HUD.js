@@ -6,11 +6,18 @@ public var zoomMod : float = 0.2;
 
 public var cameraPrefab : Camera;
 
-private var txtMessage : UnityEngine.UI.Text;
-private var txtHealth : UnityEngine.UI.Text;
-private var txtAmmo : UnityEngine.UI.Text;
-private var txtPoints : UnityEngine.UI.Text;
-private var txtKills : UnityEngine.UI.Text;
+private var hudPanel : GameObject;
+private var hudMessage : UnityEngine.UI.Text;
+private var hudHealth : UnityEngine.UI.Text;
+private var hudAmmo : UnityEngine.UI.Text;
+private var hudPoints : UnityEngine.UI.Text;
+private var hudKills : UnityEngine.UI.Text;
+
+private var goPanel : GameObject;
+private var goKills : UnityEngine.UI.Text;
+private var goAmmo : UnityEngine.UI.Text;
+private var goPoints : UnityEngine.UI.Text;
+private var goHealth : UnityEngine.UI.Text;
 
 private var cameraObj : Camera;
 private var playerObj : GameObject;
@@ -43,11 +50,20 @@ function Start() {
 
   player = playerObj.GetComponent(Player);
 
-  txtHealth = GameObject.Find('txt_health').GetComponent(UnityEngine.UI.Text);
-  txtAmmo = GameObject.Find('txt_ammo').GetComponent(UnityEngine.UI.Text);
-  txtMessage = GameObject.Find('txt_message').GetComponent(UnityEngine.UI.Text);
-  txtKills = GameObject.Find('txt_kills').GetComponent(UnityEngine.UI.Text);
-  txtPoints = GameObject.Find('txt_points').GetComponent(UnityEngine.UI.Text);
+  hudPanel = GameObject.Find('hud_panel');
+  hudHealth = GameObject.Find('hud_health').GetComponent(UnityEngine.UI.Text);
+  hudAmmo = GameObject.Find('hud_ammo').GetComponent(UnityEngine.UI.Text);
+  hudMessage = GameObject.Find('hud_message').GetComponent(UnityEngine.UI.Text);
+  hudKills = GameObject.Find('hud_kills').GetComponent(UnityEngine.UI.Text);
+  hudPoints = GameObject.Find('hud_points').GetComponent(UnityEngine.UI.Text);
+
+  goPanel = GameObject.Find('go_panel');
+  goPoints = GameObject.Find('go_points').GetComponent(UnityEngine.UI.Text);
+  goAmmo = GameObject.Find('go_ammo').GetComponent(UnityEngine.UI.Text);
+  goHealth = GameObject.Find('go_health').GetComponent(UnityEngine.UI.Text);
+  goKills = GameObject.Find('go_kills').GetComponent(UnityEngine.UI.Text);
+
+  goPanel.SetActive(false);
 
   messageList = new Array();
 
@@ -56,13 +72,17 @@ function Start() {
 function FixedUpdate() {
 
   if (playerObj == null) {
+    if (hudPanel.active) {
+      hudHealth.text = "0 /" + hudHealth.text.Split("/"[0])[1];
+      gameOver();
+    }
     return;
   }
 
-  txtAmmo.text = player.ammo.ToString();
-  txtKills.text = kills.ToString();
-  txtPoints.text = points.ToString();
-  txtHealth.text = player.health.ToString() + " / " + player.maxHealth.ToString();
+  hudAmmo.text = player.ammo.ToString();
+  hudKills.text = kills.ToString();
+  hudPoints.text = points.ToString();
+  hudHealth.text = player.health.ToString() + " / " + player.maxHealth.ToString();
 
   cameraObj.transform.position.x = playerObj.transform.position.x;
   cameraObj.transform.position.y = playerObj.transform.position.y;
@@ -72,10 +92,10 @@ function FixedUpdate() {
   if (messageTimer < 0) {
     if (messageList.length > 0) {
       var message : MessageClass = messageList.Shift() as MessageClass; 
-      txtMessage.text = message.text;
+      hudMessage.text = message.text;
       messageTimer = message.lifeTime;
-    } else if (txtMessage.text) {
-      txtMessage.text = "";
+    } else if (hudMessage.text) {
+      hudMessage.text = "";
     }
   }
 
@@ -117,4 +137,16 @@ function addPoints(amount : int, isKill : boolean) {
 
 function getPoints() : int {
   return points;
+}
+
+function gameOver() {
+
+  goKills.text = kills.ToString();
+  goPoints.text = points.ToString();
+  goHealth.text = hudHealth.text;
+  goAmmo.text = hudAmmo.text;
+
+  goPanel.SetActive(true);
+  hudPanel.SetActive(false);
+
 }
