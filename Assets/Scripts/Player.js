@@ -5,6 +5,7 @@ public var maxHealth : float = 100;
 public var ammo : int = 10;
 public var healthDrainSpeed: float = 1;  // remove amount of HP from player every N seconds
 public var healthDrainAmount: float = 1; // amount of HP to remove over time
+public var bloodDrinkingSpeed: float = 5;
 
 public var projectile : GameObject;
 public var deathParticles : ParticleSystem;
@@ -14,6 +15,7 @@ private var hud : HUD;
 private var animator : Animator;
 private var rigidBody : Rigidbody2D;
 private var nextHealthDrainTime: float = healthDrainSpeed;
+private var nextBloodDrinkTime: float = 1;
 
 
 function Start() {
@@ -111,3 +113,13 @@ function FireWeapon() {
   Debug.Log("Fire, actor (" + gameObject.ToString() + "), ammo remains (" + ammo.ToString() + ")");
 }
 
+function OnTriggerStay2D(coll: Collider2D) {
+  if (coll.gameObject.tag == 'BloodPool') {
+    if (Time.time > nextBloodDrinkTime) {
+      var pool: BloodPool = coll.gameObject.GetComponent(BloodPool);
+      ModHealth(pool.DrainPool(bloodDrinkingSpeed));
+
+      nextBloodDrinkTime = Time.time + 1; // can drink once every second
+    }
+  }
+}
