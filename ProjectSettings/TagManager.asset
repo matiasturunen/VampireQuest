@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - HUD
+  - BloodPool
+  - obstacle
   layers:
   - Default
   - TransparentFX

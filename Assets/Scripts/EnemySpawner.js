@@ -41,11 +41,40 @@ function FixedUpdate() {
   }
 }
 
-private function getSpawnPoint() {
+private function randomPoint() {
   var point: Vector2 = Random.insideUnitCircle;
   var randomized = Random.Range(spawnRadiusMin, spawnRadiusMax) * point;
 
   return randomized + playerObject.transform.position;
+}
+
+private function isValidSpawnpoint(point: Vector2) {
+  var collidersInPoint = Physics2D.OverlapPointAll(point);
+  for (var coll: Collider2D in collidersInPoint) {
+    // put rules for valid point here
+    if (coll.gameObject.tag == 'obstacle') {
+      return false;
+    }
+
+    // Spawnpoint is inside gamefield, assuming that it is named as 'TileMasterFiled'
+    if (coll.gameObject.transform.parent.transform.parent.name == 'TileMasterField') {
+      Debug.Log('Thats great place to spawn at ' + coll.gameObject.transform.parent.transform.parent.name);
+      return false;
+    }
+
+  }
+  return true;
+}
+
+private function getSpawnPoint() {
+
+
+  var spawnPoint = randomPoint();
+  while (!isValidSpawnpoint(spawnPoint)) {
+    spawnPoint = randomPoint();
+  }
+
+  return spawnPoint;
 }
 
 private function SpawnWave(waveNum: int) {

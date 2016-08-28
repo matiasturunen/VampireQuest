@@ -9,6 +9,7 @@ var speed: float = 2;        // movement speed
 var deathParticles: ParticleSystem; // particles to show on death
 var bloodAmount: float = 30; // Amount of blood contained in this enemy.
 var points: int = 5; // number of points rewarded for killing this
+var bloodPool: GameObject;
 
 var loot: GameObject[];     // items to drop on death
 
@@ -52,6 +53,13 @@ private function DropLoot() {
   }
 }
 
+private function CreateBloodPool() {
+  if (bloodPool) {
+    var pool = Instantiate(bloodPool, transform.position, Quaternion.identity).GetComponent(BloodPool);
+    pool.setProperties(bloodAmount);
+  }
+}
+
 private function Kill() {
   Debug.Log("Killed enemy (" + gameObject.ToString() + ")");
 
@@ -70,6 +78,7 @@ private function Kill() {
     );
   }
 
+  CreateBloodPool();
   DropLoot();
   Destroy(gameObject);
 }
