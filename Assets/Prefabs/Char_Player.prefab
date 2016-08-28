@@ -105,7 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  hud: {fileID: 114000012442238016, guid: 92ce2d160d40f224f8fd40b68a21a0b0, type: 2}
 --- !u!114 &114000013808900534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,6 +119,8 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   ammo: 10000
+  healthDrainSpeed: 1
+  healthDrainAmount: 1
   projectile: {fileID: 1000013847462892, guid: 709dad28f93767b4782f725c8c7f7548, type: 2}
   deathParticles: {fileID: 198000012841012702, guid: e8c94bccee8a1744b82bfc8f0c50a633,
     type: 2}

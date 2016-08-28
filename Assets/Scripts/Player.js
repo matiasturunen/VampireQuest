@@ -3,6 +3,8 @@
 public var health : float = 0;
 public var maxHealth : float = 100;
 public var ammo : int = 10;
+public var healthDrainSpeed: float = 1;  // remove amount of HP from player every N seconds
+public var healthDrainAmount: float = 1; // amount of HP to remove over time
 
 public var projectile : GameObject;
 public var deathParticles : ParticleSystem;
@@ -11,6 +13,7 @@ public var loot : GameObject[];
 private var hud : HUD;
 private var animator : Animator;
 private var rigidBody : Rigidbody2D;
+private var nextHealthDrainTime: float = healthDrainSpeed;
 
 
 function Start() {
@@ -18,10 +21,26 @@ function Start() {
   animator = GetComponent(Animator);
 
   hud = GameObject.Find("HUD").GetComponent(HUD);
+
+  if (health <= 0) {
+    health = maxHealth;
+  }
 }
 
 function FixedUpdate() {
+  Animate();
+  DrainHealth();
+  CheckForDeath();
+}
 
+private function DrainHealth() {
+  if (Time.time > nextHealthDrainTime) {
+    health -= healthDrainAmount;
+    nextHealthDrainTime = Time.time + healthDrainSpeed;
+  }
+}
+
+private function Animate() {
   if (rigidBody && animator) {
     if (rigidBody.velocity != Vector2.zero) {
       animator.SetTrigger("move");
@@ -29,7 +48,14 @@ function FixedUpdate() {
       animator.SetTrigger("stop");
     }
   }
+}
 
+private function CheckForDeath() {
+  if (health <= 0) {
+    Kill();
+  } else if (health > maxHealth) {
+    health = maxHealth;
+  }
 }
 
 function Kill() {
@@ -63,12 +89,6 @@ function ModHealth(mod : float) {
     hud.Message("Received " + (mod * (-1)).ToString() + " damage...");
   } else {
     hud.Message("Restored " + mod.ToString() + " health...");
-  }
-
-  if (health <= 0) {
-    Kill();
-  } else if (health > maxHealth) {
-    health = maxHealth;
   }
 }
 
