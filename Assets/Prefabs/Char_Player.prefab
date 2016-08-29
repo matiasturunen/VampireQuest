@@ -39,10 +39,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012731611986}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.88, y: 2.45, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.89339197, w: -0.44927818}
+  m_LocalPosition: {x: -0.61, y: 0.71, z: 0}
   m_LocalScale: {x: 0.7, y: 0.6, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -126.857}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -203,6 +203,7 @@ MonoBehaviour:
     type: 2}
   loot: []
   reloadSound: {fileID: 8300000, guid: 84ea548e6327e524eb2d8553f04c51f0, type: 3}
+  fireSound: {fileID: 8300000, guid: eef90c2e3d32fea40b98f0414639be75, type: 3}
 --- !u!212 &212000012516734304
 SpriteRenderer:
   m_ObjectHideFlags: 1
