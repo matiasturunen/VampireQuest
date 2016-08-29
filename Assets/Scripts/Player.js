@@ -13,6 +13,7 @@ public var deathParticles : ParticleSystem;
 public var loot : GameObject[];
 
 public var reloadSound: AudioClip;
+public var fireSound: AudioClip;
 private var audioSource: AudioSource;
 
 private var hud : HUD;
@@ -107,6 +108,13 @@ function AddAmmo(amount : int) {
   hud.Message("Added " + amount.ToString() + " ammo...");
 }
 
+private function playClip(clip: AudioClip, loop: boolean, volume: float) {
+  audioSource.clip = clip;
+  audioSource.loop = loop;
+  audioSource.volume = volume;
+  audioSource.Play();
+}
+
 function FireWeapon() {
   if (Time.time > nextBoltFireTime) {
     nextBoltFireTime = Time.time + reloadTime;
@@ -118,9 +126,11 @@ function FireWeapon() {
         0
       );
       Instantiate(projectile, spawnPos, transform.rotation);
-      audioSource.clip = reloadSound;
-      audioSource.volume = 0.4;
-      audioSource.Play();
+
+      // play sounds
+      playClip(fireSound, false, 0.6);
+      yield WaitForSeconds(audioSource.clip.length);
+      playClip(reloadSound, false, 0.4);
     }
 
     Debug.Log("Fire, actor (" + gameObject.ToString() + "), ammo remains (" + ammo.ToString() + ")");
