@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e204cddec4046740b55fca7a91374cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRadiusMin: 15
-  spawnRadiusMax: 16
+  spawnRadiusMin: 11
+  spawnRadiusMax: 12
   Waves:
   - name: Wave 1
     WaveEnemies:
